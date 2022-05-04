@@ -1,1 +1,1 @@
-# pratikum_alprog_13
+# praktikum_alprog_13
