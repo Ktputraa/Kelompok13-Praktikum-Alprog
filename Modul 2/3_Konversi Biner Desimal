@@ -107,9 +107,9 @@ int clean(){
 	return 1;
 }
 
-int binInput(){
+int menu_binDes(){
 //	input2:
-	long long inputbin;
+	long long biner;
 	int len;
 	int i = 0;
 	char cekbin[256];
@@ -120,34 +120,34 @@ int binInput(){
 	judul();
 		
 	printf("\n\t Bilangan biner yang ingin di konversi: ");
-    while(((scanf(" %lld%c", &inputbin, &enterCheck)) != 2 || enterCheck != '\n')&& clean() ){
+    while(((scanf(" %lld%c", &biner, &enterCheck)) != 2 || enterCheck != '\n')&& clean() ){
 	        printf("\n\t -- Maaf pilihan yang anda masukkan tidak valid --\n");
 	        while(getchar() != '\n');
 	        printf("Masukkan bilangan biner anda : ");
 	}
 
     //cek binary
-    sprintf(cekbin, "%lld", inputbin);
+    sprintf(cekbin, "%lld", biner);
     len = strlen(cekbin);
     while( i < len){
         if(cekbin[i] > '1' || cekbin[i] < '0'){
             printf("\n\t -- Maaf pilihan yang anda masukkan tidak valid --\n");
             getch();
-            inputbin = 0;
+            biner = 0;
 //            goto input2;
-			binInput();
+			menu_binDes();
         }
         i++;
     }
     printf("\n\n\t -------------------------------------------------");
-	printf("\n\t Hasil konversi biner %lld", inputbin);
-    hitung_bindes(inputbin);
+	printf("\n\t Hasil konversi biner %lld", biner);
+    hitung_bindes(biner);
     
     akhir();
 }
 
-int desInput(){
-	int input;
+int menu_desBin(){
+	int desimal;
 	int enterCheck;
     fflush(stdin);
     system("cls");
@@ -155,22 +155,22 @@ int desInput(){
 	judul();
 		
 	printf("\n\t Bilangan desimal yang ingin di konversi: ");
-    if(((scanf(" %d%c", &input, &enterCheck)) != 2 || enterCheck != '\n')&& clean() || input < 0){
+    if(((scanf(" %d%c", &desimal, &enterCheck)) != 2 || enterCheck != '\n')&& clean() || desimal < 0){
 		        printf("Masukkan Bilangan yang Valid");
 		        while(getchar() != '\n');
-		        desInput();
+		        menu_desBin();
 	}else{
 	printf("\n\n\t -------------------------------------------------");
-	printf("\n\t Hasil konversi desimal %d", input);
-    hitung_desbin(input);
+	printf("\n\t Hasil konversi desimal %d", desimal);
+    hitung_desbin(desimal);
 	
 	akhir();
     }	
 }
 
 int main(){
-    int input, option, i=0, len;
-    long long inputbin;
+    int desimal, option, i=0, len;
+    long long biner;
     char cekbin[256];
     int ulang = 1;
 	int enterCheck;
@@ -179,9 +179,9 @@ int main(){
     printf("\t  Masukkan menu yang ingin dipilih : ");
 	utama = validasi();
 	if (utama == 1){
-		binInput();
+		menu_binDes();
 	}else if (utama == 2){
-		desInput();
+		menu_desBin();
 	}else if (utama == 3){
 		printf("\n\t ________________________________________________ \n");
 		printf("\t|                                                |\n");
